@@ -7,9 +7,7 @@ class DosesController < ApplicationController
   def create
     @dose = Dose.new(dose_params)
     @cocktail = Cocktail.find(params[:cocktail_id])
-    unless Ingredient.find(params[:dose][:ingredient_id]).nil?
-      @ingredient = Ingredient.find(params[:dose][:ingredient_id])
-    end
+    @ingredient = Ingredient.find(params[:dose][:ingredient_id]) unless params[:dose][:ingredient_id].nil?
     @dose.cocktail = @cocktail
     @dose.ingredient = @ingredient
 
