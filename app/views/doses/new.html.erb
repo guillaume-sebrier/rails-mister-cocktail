@@ -1,0 +1,13 @@
+<div class="navbar">
+  <%= link_to 'MisterCocktail', cocktails_path %>
+  <%= link_to 'Add Cocktail', new_cocktail_path, class: 'btn btn-outline-primary' %>
+</div>
+
+<div class="container">
+  <h1>New Cocktail</h1>
+  <%= simple_form_for [@cocktail,@dose] do |f| %>
+    <%= f.input :description %>
+    <%= f.association :ingredient, collection: Ingredient.all %>
+    <%= f.submit "Create dose", class: "btn btn-danger" %>
+  <% end %>
+</div>
