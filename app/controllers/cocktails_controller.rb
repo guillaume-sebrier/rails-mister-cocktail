@@ -20,6 +20,11 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.new
   end
 
+  def search
+    @search = params["search"]
+    @cocktails = Cocktail.where("name ILIKE ?", "%#{@search[:name]}%")
+  end
+
   private
 
   def set_cocktail
