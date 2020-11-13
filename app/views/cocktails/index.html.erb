@@ -3,19 +3,14 @@
   <%= link_to 'Add Cocktail', new_cocktail_path, class: 'btn btn-outline-primary' %>
 </div>
 <div class="container">
-<h1>All our Cocktails (<%= @cocktails.length %>)</h1>
-  <div class="row justify-content-start">
+  <h1>All our Cocktails (<%= @cocktails.length %>)</h1>
+  <div class="cards">
     <% @cocktails.each do |cocktail| %>
-      <div class="card" style="width: 18rem;">
-        <% unless cocktail.picture.nil? %>
-          <%= image_tag cocktail.picture, alt: "alttext", class: "card-img-top"%>
-        <% end %>
-        <div class="card-body">
-        <h3><%= cocktail.name %></h3>
-        <%= link_to 'More info', cocktail_path(cocktail) %>
+      <%= link_to cocktail_path(cocktail) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.picture %>)">
+          <%= cocktail.name %>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
-
